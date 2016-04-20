@@ -1,5 +1,4 @@
 
-
 *** 19 April 2016
 *** How to Use Git and GitHub 
 *** 
@@ -823,48 +822,4 @@ also search for similar lines in game.js
 
 MERGING - Conflict
 vi the file in the conflict message
-
-
-audacity -!QW@
-github !QW@
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-  
-
-
-
-
-
-
-
-
-
 
