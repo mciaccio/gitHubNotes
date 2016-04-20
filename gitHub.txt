@@ -1,0 +1,870 @@
+
+
+*** 19 April 2016
+*** How to Use Git and GitHub 
+*** 
+*** Git - Version control system
+*** GitHub - Code sharing and collaboration platform
+*** 
+*** Lesson 1: Navigating a Commit History
+*** Lesson 2: Creating and Modifying a Repository
+*** Lesson 3: Using GitHub to Collaborate
+***
+*** https://github.com
+***
+***
+
+***
+***
+*** Lesson 1: Navigating a Commit History
+***
+
+*** Finding Diffs Between Larger Files 4/33 notes  
+
+Asteroids
+space bar   - start game	
+
+left arrow  - turn
+right arrow - turn
+up arrow    - fire engine - changed to space bar (more intuitive)
+space bar   - shoot       - changed to enter  
+
+game_old.js
+game_new.js
+
+
+
+
+*** Git syntax
+
+git --version
+git version 2.6.4 (Apple Git-63)
+
+git config --global color.ui auto 
+    # added to /Users/MenfiSystems/Documents/githubEducation/version_control/gitSetup/gitSetup
+    # Action item save will take care of this
+
+***
+
+git log
+    list of commits
+
+***
+
+git diff 0de1296d74e924f73870dacc4f451eb2b7c49444 0bfe082c1aa041d543c97b56f7432dc474aaf0df
+
+***
+
+MenfiSystems (master) recipes $ git log --stat # identifies the file within the repository that changed
+                                               # chili-recipe.txt
+commit 0bfe082c1aa041d543c97b56f7432dc474aaf0df
+Author: Sarah Spikes <sarah+github@udacity.com>
+Date:   Mon Apr 18 20:22:08 2016 -0500
+
+    Remove cumin from chili
+
+ chili-recipe.txt | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+***
+
+*** git clone
+
+git clone https://github.com/udacity/asteroids.git
+
+# works
+# positioned (pwd) in the directory in which the repository will be created
+git clone https://github.com/mciaccio/hello-world 
+Cloning into 'hello-world'...
+remote: Counting objects: 20, done.
+remote: Total 20 (delta 0), reused 0 (delta 0), pack-reused 20
+Unpacking objects: 100% (20/20), done.
+Checking connectivity... done.
+
+*** after the git clone; git log
+$ git log
+commit fe0bf9fe52bf93f5430564ed4a2a6564f0dc642c
+Merge: a6faee3 0c4c0f1
+Author: mciaccio <michael.ciaccio@gmail.com>
+Date:   Sat Mar 26 16:09:48 2016 -0500
+
+    Merge pull request #1 from mciaccio/readme-edits
+    
+    Readme edits
+
+commit 0c4c0f185b0e7a19655fe790416cb00ff36d860b
+Author: mciaccio <michael.ciaccio@gmail.com>
+Date:   Sat Mar 26 16:06:18 2016 -0500
+
+    Update README.md
+
+# after the git clone; git log --stat
+# identifies the file(s) that have changed
+
+MenfiSystems (master) hello-world $ git log --stat
+commit fe0bf9fe52bf93f5430564ed4a2a6564f0dc642c
+Merge: a6faee3 0c4c0f1
+Author: mciaccio <michael.ciaccio@gmail.com>
+Date:   Sat Mar 26 16:09:48 2016 -0500
+
+    Merge pull request #1 from mciaccio/readme-edits
+    
+    Readme edits
+
+commit 0c4c0f185b0e7a19655fe790416cb00ff36d860b
+Author: mciaccio <michael.ciaccio@gmail.com>
+Date:   Sat Mar 26 16:06:18 2016 -0500
+
+    Update README.md
+
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+# git clone - another example
+
+# positioned where the github repository will be cloned
+pwd
+/Users/MenfiSystems/Documents/githubBaseDirectory
+
+# Nothing there
+MenfiSystems githubBaseDirectory $ ls -l
+
+MenfiSystems githubBaseDirectory $ git clone https://github.com/mciaccio/gitHubNotes
+Cloning into 'gitHubNotes'...
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+Checking connectivity... done.
+
+# local copy of repository
+MenfiSystems githubBaseDirectory $ ls -lR
+total 0
+drwxr-xr-x  4 MenfiSystems  staff  136 Apr 20 16:48 gitHubNotes
+
+./gitHubNotes:
+total 8
+-rw-r--r--  1 MenfiSystems  staff  90 Apr 20 16:48 README.md
+
+
+*** Unix Commands
+
+. /Users/MenfiSystems/Documents/githubEducation/version_control/gitSetup/gitSetup
+
+
+cd /Users/MenfiSystems/Documents/githubEducation/version_control
+
+cd /Users/MenfiSystems/Documents/githubEducation/version_control/gitSetup
+
+cd /Users/MenfiSystems/Documents/githubBaseDirectory
+
+
+
+*** Action items
+# Save on Github
+/Users/MenfiSystems/Documents/githubEducation/version_control/gitSetup/gitSetup
+/Users/MenfiSystems/Documents/githubEducation/version_control/gitSetup/gitSetup1
+
+
+*** Miscellaneous 
+Commits
+
+
+*** Glossary
+Git Repository - collection of files tracked as a cohesive unit
+ 
+
+
+
+
+
+
+
+***
+***
+*** 
+
+***
+***  OLD STUFF
+*** 
+
+***
+***
+*** 
+
+git log list commits starting with most recent 
+
+git log --stat
+
+git diff #1 #2
+
+git clone URL of repository - from cloud -> laptop
+
+git checkout commit ID to restore - go back in time 
+
+*** clone example
+
+Michaels-MacBook-Pro:version_control MenfiSystems$ git clone https://github.com/udacity/asteroids.git
+Cloning into 'asteroids'...
+remote: Counting objects: 209, done.
+remote: Total 209 (delta 0), reused 0 (delta 0), pack-reused 209
+Receiving objects: 100% (209/209), 184.61 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (128/128), done.
+Checking connectivity... done.
+
+Michaels-MacBook-Pro:version_control MenfiSystems$ ls -lR asteroids/
+total 544
+-rw-r--r--  1 MenfiSystems  staff  33970 Mar 27 20:46 39459__THE_bizniss__laser.wav
+-rw-r--r--  1 MenfiSystems  staff  86508 Mar 27 20:46 51467__smcameron__missile_explosion.wav
+-rw-r--r--  1 MenfiSystems  staff   1087 Mar 27 20:46 LICENSE
+-rw-r--r--  1 MenfiSystems  staff    769 Mar 27 20:46 README.md
+-rw-r--r--  1 MenfiSystems  staff  31676 Mar 27 20:46 game.js
+-rw-r--r--  1 MenfiSystems  staff   1177 Mar 27 20:46 index.html
+-rw-r--r--  1 MenfiSystems  staff   1367 Mar 27 20:46 ipad.js
+-rw-r--r--  1 MenfiSystems  staff  70843 Mar 27 20:46 jquery-1.4.1.min.js
+-rw-r--r--  1 MenfiSystems  staff  27861 Mar 27 20:46 vector_battle_regular.typeface.js
+
+*** clone example 
+
+Michaels-MacBook-Pro:version_control MenfiSystems$ git clone https://github.com/mciaccio/hello-world
+Cloning into 'hello-world'...
+remote: Counting objects: 20, done.
+remote: Compressing objects: 100% (14/14), done.
+remote: Total 20 (delta 8), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (20/20), done.
+Checking connectivity... done.
+
+Michaels-MacBook-Pro:version_control MenfiSystems$ ls -l
+total 0
+drwxr-xr-x  12 MenfiSystems  staff  408 Mar 27 20:46 asteroids
+drwxr-xr-x   4 MenfiSystems  staff  136 Mar 27 18:50 game
+drwxr-xr-x   4 MenfiSystems  staff  136 Mar 27 21:00 hello-world
+drwxr-xr-x   4 MenfiSystems  staff  136 Mar 27 20:04 reflections
+
+Michaels-MacBook-Pro:version_control MenfiSystems$ ls -lR hello-world/
+total 8
+-rw-r--r--  1 MenfiSystems  staff  101 Mar 27 21:00 README.md
+
+***
+
+git config --global color.ui auto - did not seem to be needed 
+
+***  git log --stat - note number of insertions and number of deletions
+ 
+git log --stat
+
+commit b0678b161fcf74467ed3a63110557e3d6229cfa6
+Author: cbuckey <caroline@udacity.com>
+Date:   Mon May 24 04:15:21 2010 -0700
+
+    Revert controls
+
+ game.js | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-) - note number of insertions and number of deletions
+
+***
+
+# checkout earlier version, see if bug is in that version
+# Checking out a commit not a named branch generates the detached HEAD message 
+# Definition of HEAD - current commit 
+Michaels-MacBook-Pro:asteroids MenfiSystems$ git checkout b0678b161fcf74467ed3a63110557e3d6229cfa6
+
+Note: checking out 'b0678b161fcf74467ed3a63110557e3d6229cfa6'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at b0678b1... Revert controls
+
+
+git checkout 3884eab839af1e82c44267484cf2945a766081f3
+
+*** 31 March 2016
+
+# See where we are
+ 
+Michaels-MacBook-Pro:version_control MenfiSystems$ pwd
+/Users/MenfiSystems/Documents/githubEducation/version_control
+
+# See what is there
+Michaels-MacBook-Pro:version_control MenfiSystems$ ls -l
+total 0
+drwxr-xr-x  12 MenfiSystems  staff  408 Mar 29 21:54 asteroids
+drwxr-xr-x   4 MenfiSystems  staff  136 Mar 27 18:50 game
+drwxr-xr-x   6 MenfiSystems  staff  204 Mar 29 22:12 gitSetup
+drwxr-xr-x   4 MenfiSystems  staff  136 Mar 27 21:00 hello-world
+drwxr-xr-x   4 MenfiSystems  staff  136 Mar 29 22:13 reflections
+
+# Do the clone
+Michaels-MacBook-Pro:version_control MenfiSystems$ git clone https://github.com/udacity/pappu-pakia.git
+Cloning into 'pappu-pakia'...
+remote: Counting objects: 1221, done.
+remote: Total 1221 (delta 0), reused 0 (delta 0), pack-reused 1221
+Receiving objects: 100% (1221/1221), 3.02 MiB | 4.90 MiB/s, done.
+Resolving deltas: 100% (775/775), done.
+Checking connectivity... done.
+
+# See what is there
+Michaels-MacBook-Pro:version_control MenfiSystems$ ls -l
+total 0
+drwxr-xr-x  12 MenfiSystems  staff  408 Mar 29 21:54 asteroids
+drwxr-xr-x   4 MenfiSystems  staff  136 Mar 27 18:50 game
+drwxr-xr-x   6 MenfiSystems  staff  204 Mar 29 22:12 gitSetup
+drwxr-xr-x   4 MenfiSystems  staff  136 Mar 27 21:00 hello-world
+drwxr-xr-x  11 MenfiSystems  staff  374 Mar 31 16:21 pappu-pakia *** new ***
+drwxr-xr-x   4 MenfiSystems  staff  136 Mar 29 22:13 reflections
+
+git diff oldest newest 
+
+
+*** 31 Mar 2016
+
+# See where we are
+Michaels-MacBook-Pro:recipes MenfiSystems$ pwd
+/Users/MenfiSystems/Documents/githubEducation/version_control/recipes
+
+# See what is there
+Michaels-MacBook-Pro:recipes MenfiSystems$ ls -al
+total 24
+drwxr-xr-x   5 MenfiSystems  staff  170 Mar 31 23:40 .
+drwxr-xr-x  10 MenfiSystems  staff  340 Mar 31 23:44 ..
+-rw-r--r--   1 MenfiSystems  staff    5 Mar 31 23:40 cake-recipe.txt
+-rw-r--r--   1 MenfiSystems  staff    5 Mar 31 23:40 chile-recipe.txt
+-rw-r--r--   1 MenfiSystems  staff    5 Mar 31 23:40 frosting-recipe.txt
+
+# git init
+Michaels-MacBook-Pro:recipes MenfiSystems$ git init
+Initialized empty Git repository in /Users/MenfiSystems/Documents/githubEducation/version_control/recipes/.git/
+
+# See what is there 
+Michaels-MacBook-Pro:recipes MenfiSystems$ ls -al
+total 24
+drwxr-xr-x   6 MenfiSystems  staff  204 Mar 31 23:44 .
+drwxr-xr-x  10 MenfiSystems  staff  340 Mar 31 23:44 ..
+drwxr-xr-x  10 MenfiSystems  staff  340 Mar 31 23:44 .git
+-rw-r--r--   1 MenfiSystems  staff    5 Mar 31 23:40 cake-recipe.txt
+-rw-r--r--   1 MenfiSystems  staff    5 Mar 31 23:40 chile-recipe.txt
+-rw-r--r--   1 MenfiSystems  staff    5 Mar 31 23:40 frosting-recipe.txt
+
+
+*** 31 Mar 2016
+
+# Not yet a repository just a routine directory
+MenfiSystems recipes $ git status
+fatal: Not a git repository (or any of the parent directories): .git
+
+# 
+MenfiSystems recipes $ pwd
+/Users/MenfiSystems/Documents/githubEducation/version_control/recipes
+
+
+# Not yet a repository just a routine directory
+MenfiSystems recipes $ git status
+fatal: Not a git repository (or any of the parent directories): .git
+
+# git init
+MenfiSystems recipes $ git init
+Initialized empty Git repository in /Users/MenfiSystems/Documents/githubEducation/version_control/recipes/.git/
+
+
+MenfiSystems (master #) recipes $ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	cake-recipe.txt
+	chile-recipe.txt
+	frosting-recipe.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+# git add
+MenfiSystems (master #) recipes $ git add cake-recipe.txt
+MenfiSystems (master +) recipes $ git add frosting-recipe.txt
+
+
+# git status
+MenfiSystems (master +) recipes $ git status
+On branch master
+
+Initial commit
+
+Changes to be committed: *** added to staging area 
+  (use "git rm --cached <file>..." to unstage)  *** note staged
+
+	new file:   cake-recipe.txt
+	new file:   frosting-recipe.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	chile-recipe.txt
+
+*** 01 April 2016
+
+# git status after add before commit
+MenfiSystems (master +) recipes $ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   cake-recipe.txt
+	new file:   frosting-recipe.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	chile-recipe.txt
+
+# git commit -m "Add a cake and frosting recipe" 
+MenfiSystems (master +) recipes $ git commit -m "Add a cake and frosting recipe" 
+[master (root-commit) c58363f] Add a cake and frosting recipe
+ Committer: Michael <MenfiSystems@Michaels-MacBook-Pro.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+)
+ create mode 100644 cake-recipe.txt
+ create mode 100644 frosting-recipe.txt
+
+# git status after after commit
+MenfiSystems (master) recipes $ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	chile-recipe.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+*** 2 April 2016 
+
+git checkout master use this if you had checked checkout out an older version
+
+git diff with no arguments compares the working directory and the staging area
+
+git diff --staged -  differences between staging area and most recent commit
+Do this before each commit verifies what you are committing.
+
+git reset --hard 
+Discards changes in working directory and staging area.
+Not reversible 
+
+
+*** 2 April 2016 2 asteroid fragments not 3 
+
+MenfiSystems (master) asteroids $ pwd
+/Users/MenfiSystems/Documents/githubEducation/version_control/asteroids
+
+MenfiSystems (master) asteroids $ git branch
+* master
+
+# Create branch 
+MenfiSystems (master) asteroids $ git branch easy-mode
+
+# List branches note the * - indicates branch currently checked out - master 
+# Not the easy-mode branch where we want to do our development.
+MenfiSystems (master) asteroids $ git branch
+  easy-mode
+* master
+
+# Switch, checkout the new experimental branch - easy-mode
+# Changes will go here now
+# Checkout a named branch not a commit
+MenfiSystems (master) asteroids $ git checkout easy-mode
+Switched to branch 'easy-mode'
+
+# Confirm - note the * is now by the easy-mode branch.
+# easy-mode is the branch that is checked out, 
+MenfiSystems (easy-mode) asteroids $ git branch
+* easy-mode - branch checked out, changes will only go here
+  master
+
+# List all branches 
+MenfiSystems (easy-mode) asteroids $ git branch -a
+* easy-mode
+  master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/coins
+  remotes/origin/master
+
+# List remote branches 
+MenfiSystems (easy-mode) asteroids $ git branch -r
+  origin/HEAD -> origin/master
+  origin/coins
+  origin/master
+
+# Checkout the remote branch
+# Checkout a branch not a commit
+MenfiSystems (easy-mode) asteroids $ git checkout coins
+Branch coins set up to track remote branch coins from origin.
+Switched to a new branch 'coins'
+
+# List the now checkED out remote branch - note the *
+MenfiSystems (coins) asteroids $ git branch 
+* coins
+  easy-mode
+  master
+
+# MenfiSystems (master) asteroids $ git log --graph --oneline master coins
+# MenfiSystems (master) asteroids $ git log --graph --oneline master coins
+# note master position
+# Visualize how the coins branch code enhancement fits into the master branch 
+# For example this tells us color was added AFTER the coins branch was created
+# Hence the coins branch code - when it runs - the color feature is not there. 
+#
+MenfiSystems (coins) asteroids $ MenfiSystems (master) asteroids $ git log --graph --oneline master coins 
+* 5cc0270 add delay back to bullets
+* 3884eab Add color ### color not added to master until way after coins branch created  
+* 3e42136 now using requestAnimationFrame
+* 4035769 frame interval was set wrong after game was paused
+* 25ede83 a couple missing ends with the ipad version
+* df03538 I can't spell 'screen' apparently :)
+| * 354dfdd Make ships able to spawn on coins  ### - coins branch
+| * 0c6daf1 Make it possible to collect coins
+| * a3c0ae4 Create helper functions
+| * 656b02e First pass at adding coins ### coins branch
+|/  
+* b0678b1 Revert controls
+* f19cb1b Fix typo in space
+* 75928a9 Use space for movement and enter for shooting
+* ac83b72 mostly finished ipad version
+* 7ca4826 trying to get div touch controls to work
+
+# you are in 'detached HEAD' state. 
+# associated with the checkout of a commit id not a named branch 
+
+# git branch coins
+# git checkout
+# git checkout -b coins <- short cut of the above two
+# Definition of Head - current commit
+# git gc - garbage collection 
+
+
+# 04 April 2016 
+Merges INTO the currently checkout branch
+
+# 05 April 2016
+Checkout 1 of the 2 in the merge.
+Checkout the branch label you want to point to the new commit.
+
+get checkout branch1 - # stuff will be merged into this one
+                       # always merges branches INTO the currently checked out branch 
+git merge branch2 - will merge branch2 into branch 1
+
+#
+# 06 April 2016 github git remote
+#
+
+git remote
+# nothing
+
+git remote add origin https://github.com/mciaccio/reflections.git
+# add
+
+git remote
+origin
+# added
+
+git remote -v # verbose
+origin	https://github.com/mciaccio/reflections.git (fetch) # pull?
+origin	https://github.com/mciaccio/reflections.git (push)
+
+git push origin master - push up 
+Username for 'https://github.com': michael.ciaccio@gmail.com
+Password for 'https://michael.ciaccio@gmail.com@github.com': 
+Counting objects: 7, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (7/7), 1.69 KiB | 0 bytes/s, done.
+Total 7 (delta 2), reused 0 (delta 0)
+To https://github.com/mciaccio/reflections.git
+ * [new branch]      master -> master
+
+
+# pull - pull down
+git pull origin master --no-edit
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/mciaccio/reflections
+ * branch            master     -> FETCH_HEAD
+   f44516a..580b43a  master     -> origin/master
+Merge made by the 'recursive' strategy.
+ lesson_3_reflections.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+
+***
+*** Using GitHub to Collaborate
+*** 18 April 2016
+*** Fork The Recipes Repository
+***
+
+# Go to the URL to be Fork(ed), click Fork button
+https://github.com/LarryMad/recipes
+
+# Refresh - https://github.com/mciaccio?tab=repositories
+New Fork(ed)repository seen on my github profile.
+recipes - forked from LarryMad/recipes - Updated 3 hours ago
+
+# Now clone the Fork(ed) repository
+# Directory - one above from where we want the new directory / repository created
+MenfiSystems version_control $ pwd
+/Users/MenfiSystems/Documents/githubEducation/version_control
+
+# Not there
+MenfiSystems version_control $ ls -l recipes
+ls: recipes: No such file or directory
+
+# Clone the Fork(ed) directory
+MenfiSystems version_control $ git clone https://github.com/mciaccio/recipes 
+Cloning into 'recipes'...
+remote: Counting objects: 13, done.
+remote: Total 13 (delta 0), reused 0 (delta 0), pack-reused 13
+Unpacking objects: 100% (13/13), done.
+Checking connectivity... done.
+
+# Directory created 
+MenfiSystems version_control $ ls -ld recipes
+drwxr-xr-x  7 MenfiSystems  staff  238 Apr 18 17:11 recipes
+
+# And it IS a git repository
+MenfiSystems version_control $ cd recipes
+MenfiSystems (master) recipes $ 
+
+
+# Remote automatically set up
+MenfiSystems (master) recipes $ git remote -v
+origin	https://github.com/mciaccio/recipes (fetch)
+origin	https://github.com/mciaccio/recipes (push)
+
+# Add collaborator 
+Settings - Add collaborator 
+
+# New file, recipe added
+MenfiSystems (master) recipes $ pwd
+/Users/MenfiSystems/Documents/githubEducation/version_control/recipes
+
+MenfiSystems (master) recipes $ ls -l lasagna 
+-rw-r--r--  1 MenfiSystems  staff  18 Apr 18 17:39 lasagna
+
+# Get the local file up to the github repository
+git add lasagna # staging area 
+git commit -m "Add lasagna file"
+git push origin master
+
+
+
+***
+*** Using GitHub to Collaborate
+*** 18 April 2016
+*** Collaborations Cause Conflict 15/34
+***
+
+# Edit / update the chili-recipe.txt file
+
+# git status
+MenfiSystems (master *) recipes $ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   chili-recipe.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+# git add 
+MenfiSystems (master *) recipes $ git add chili-recipe.txt
+
+# git status
+MenfiSystems (master +) recipes $ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   chili-recipe.txt
+
+# git commit -m "Add chile changes file"
+MenfiSystems (master +) recipes $ git commit -m "Add chile changes file"
+[master 274fbb8] Add chile changes file
+ Committer: Michael <MenfiSystems@Michaels-MacBook-Pro-2.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+
+
+***
+*** Using GitHub to Collaborate
+*** 18 April 2016
+*** Merging the changes together 20/34
+***
+*** “your branch” checked out branch - master
+
+# git status
+# Sarah’s changes on remote
+# My changes local
+# Hence conflict
+MenfiSystems (master) recipes $ git status
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 1 and 1 different commit each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+nothing to commit, working directory clean
+
+# git branch -a
+# See the branches
+MenfiSystems (master) recipes $ git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+
+# git merge master origin/master
+# Sarah’s changes on remote
+# My changes local
+# Hence conflict
+MenfiSystems (master) recipes $ git merge master origin/master
+Auto-merging chili-recipe.txt
+CONFLICT (content): Merge conflict in chili-recipe.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+# edit the file created by the failed merge attempt
+vi chili-recipe.txt 
+
+# Commit the manual edits 
+MenfiSystems (master *+|MERGING) recipes $ git add chili-recipe.txt
+MenfiSystems (master +|MERGING) recipes $ git commit -m "fix conflict"
+
+[master 0de1296] fix conflict
+ Committer: Michael <MenfiSystems@Michaels-MacBook-Pro-2.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+MenfiSystems (master) recipes $ - fixed - MERGING gone!! from prompt
+
+
+
+***
+***
+***
+
+
+
+
+
+
+
+
+
+
+
+
+# commands
+git show commit number - only code changes associated with this commit (diff parent)
+git branch -d coins
+git branch -D coins
+git log --graph --oneline
+
+git diff
+git add game.js
+
+git log -n1
+
+
+
+# notes
+game.js 
+Coin = function - need to add here
+this.color = ‘yellow’;
+this.solid = true;
+also search for similar lines in game.js
+
+MERGING - Conflict
+vi the file in the conflict message
+
+
+audacity -!QW@
+github !QW@
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+  
+
+
+
+
+
+
+
+
+
+
