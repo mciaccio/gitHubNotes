@@ -21,8 +21,12 @@ export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
 
 # git config --global core.editor "vim"
 # git config --global core.editor 'vim'
+
 # git config --global push.default upstream
+git config --global push.default upstream
+
 # git config --global merge.conflictstyle diff3  
+git config --global merge.conflictstyle diff3  
 
 git config --global color.ui auto
 
