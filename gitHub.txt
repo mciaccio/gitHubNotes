@@ -148,8 +148,6 @@ total 8
 
 *** Unix Commands
 
-. /Users/MenfiSystems/Documents/githubEducation/version_control/gitSetup/gitSetup
-
 
 cd /Users/MenfiSystems/Documents/githubEducation/version_control
 
