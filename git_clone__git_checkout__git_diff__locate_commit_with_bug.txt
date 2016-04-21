@@ -1,0 +1,121 @@
+
+***
+***
+*** Lesson 1: Navigating a Commit History
+*** Checking Out Old Versions of Code 25/34
+***
+*** git_clone__git_checkout__git_diff__locate_commit_with_bug 
+
+git checkout - restore previous version
+
+# First git clone asteroids application
+# The bullet spay bug is here
+# Finder index.html - open with Safari
+# Play game - bullet spary bug present
+
+$ git clone https://github.com/udacity/asteroids.git
+Cloning into 'asteroids'...
+remote: Counting objects: 209, done.
+remote: Total 209 (delta 0), reused 0 (delta 0), pack-reused 209
+Receiving objects: 100% (209/209), 184.61 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (128/128), done.
+Checking connectivity... done.
+ 
+# git log
+# First commit 3884eab839af1e82c44267484cf2945a766081f3 - has the bullet spray bug
+# commit - b0678b161fcf74467ed3a63110557e3d6229cfa6 - does not have the bug
+#
+# Brute force search (git checkout) for the commit with the bug
+#
+
+MenfiSystems (master) asteroids $ git log
+commit 3884eab839af1e82c44267484cf2945a766081f3  - bullet spray bug present 
+Author: cbuckey <caroline@udacity.com>
+Date:   Fri Apr 29 12:33:05 2011 -0700
+
+    Add color
+
+commit 3e42136a76cf78c6c421cd720427bf6337c2d623
+Author: Doug McInnes <doug@dougmcinnes.com>
+Date:   Tue Mar 15 22:34:49 2011 -0700
+
+    now using requestAnimationFrame
+    
+    see this for more info:
+    http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+
+commit 4035769377cce96a88d5c1167079e12f30492391 - bullet spray bug present 
+Author: Doug McInnes <doug@dougmcinnes.com>
+Date:   Wed Jun 9 21:04:32 2010 -0700
+
+    frame interval was set wrong after game was paused
+
+commit 25ede836903881848fea811df5b687b59d962da3 - bullet spray bug present ***
+Author: Doug McInnes <doug@dougmcinnes.com>
+Date:   Wed May 26 23:52:00 2010 -0700
+
+    a couple missing ends with the ipad version
+
+commit df035382c41b4d0cda86a1aa30b53f15bef05b53 - bullet spray bug not present ***
+Author: Doug McInnes <doug@dougmcinnes.com>
+Date:   Tue May 25 22:18:23 2010 -0700
+
+    I can't spell 'screen' apparently :)
+
+commit b0678b161fcf74467ed3a63110557e3d6229cfa6 - bullet spray bug not present
+Author: cbuckey <caroline@udacity.com>
+Date:   Mon May 24 04:15:21 2010 -0700
+
+    Revert controls
+
+#
+# commit 3884eab839af1e82c44267484cf2945a766081f3 - Add color - bullet spray bug present
+# commit b0678b161fcf74467ed3a63110557e3d6229cfa6 - Revert controls - does not have the bullet spray bug
+#
+# git checkout 4035769377cce96a88d5c1167079e12f30492391 - frame interval was set wrong after game was paused
+# brute force search for the bullet spray bug - the commit will either have it or not
+#
+
+git checkout 4035769377cce96a88d5c1167079e12f30492391
+ 
+MenfiSystems (master) asteroids $ git checkout 4035769377cce96a88d5c1167079e12f30492391
+Note: checking out '4035769377cce96a88d5c1167079e12f30492391'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at 4035769... frame interval was set wrong after game was paused
+
+
+#
+# 4035769377cce96a88d5c1167079e12f30492391 - Add color - bullet spray bug present
+#
+# Try an earlier commit
+#
+# 25ede836903881848fea811df5b687b59d962da3 - a couple missing ends with the ipad version
+#
+
+git checkout 25ede836903881848fea811df5b687b59d962da3  - bullet spray bug present
+# This commit introduced the bullet spray bug 
+
+Previous HEAD position was 4035769... frame interval was set wrong after game was paused
+HEAD is now at 25ede83... a couple missing ends with the ipad version
+
+git checkout df035382c41b4d0cda86a1aa30b53f15bef05b53 - bullet spray bug not present
+
+Previous HEAD position was 25ede83... a couple missing ends with the ipad version
+HEAD is now at df03538... I can't spell 'screen' apparently :)
+
+
+# look for file with bug 
+git diff df035382c41b4d0cda86a1aa30b53f15bef05b53  25ede836903881848fea811df5b687b59d962da3
+
+This line deleted 
+game.js 
+-        this.delayBeforeBullet = 10;  

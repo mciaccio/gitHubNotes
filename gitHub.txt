@@ -157,6 +157,11 @@ cd /Users/MenfiSystems/Documents/githubEducation/version_control/gitSetup
 
 cd /Users/MenfiSystems/Documents/githubBaseDirectory
 
+cp /Users/MenfiSystems/Documents/githubEducation/documentation/gitHub.txt /Users/MenfiSystems/Documents/githubBaseDirectory/gitHubNotes/gitHub.txt
+
+diff /Users/MenfiSystems/Documents/githubEducation/documentation/gitHub.txt /Users/MenfiSystems/Documents/githubBaseDirectory/gitHubNotes/gitHub.txt
+
+
 
 
 *** Action items
