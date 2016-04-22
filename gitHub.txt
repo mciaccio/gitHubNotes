@@ -6,11 +6,12 @@
 *** GitHub - Code sharing and collaboration platform
 *** 
 *** Lesson 1: Navigating a Commit History
+*** Problem Set 1
 *** Lesson 2: Creating and Modifying a Repository
 *** Lesson 3: Using GitHub to Collaborate
 ***
 *** https://github.com
-***
+*** https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf
 ***
 
 ***
@@ -145,9 +146,32 @@ drwxr-xr-x  4 MenfiSystems  staff  136 Apr 20 16:48 gitHubNotes
 total 8
 -rw-r--r--  1 MenfiSystems  staff  90 Apr 20 16:48 README.md
 
+ 
+MenfiSystems (master) gitHubNotes $ git branch -v
+* master adf50c4 Add pappuNotes.txt
+
+MenfiSystems (master) gitHubNotes $ git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master 
+
+# Initializes or creates a new git repository - transforms a routine directory into a git repository
+git init
+
+# fix get checkout commit / get back to the tip of the branch 
+git checkout master
+
+git diff with no arguments no commit ids - compares working directory and the staging area 
+Normally use git diff with two commit ids - but working directory and staging area do not have commit ids
+
+git diff --staged - compares the staging area and the most recent repository commit 
+
+
+
 
 *** Unix Commands
 
+. /Users/MenfiSystems/Documents/githubEducation/version_control/gitSetup/gitSetup
 
 cd /Users/MenfiSystems/Documents/githubEducation/version_control
 

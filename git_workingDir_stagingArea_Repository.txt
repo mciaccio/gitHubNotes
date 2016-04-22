@@ -1,0 +1,25 @@
+
+Working directory
+
+	# -- git add --
+	git add cake-recipe.txt
+	git add chili-recipe.txt
+	git add frosting-recipe.txt
+
+	git diff with no arguments no commit ids - compares working directory and the staging area 
+	Normally use git diff with two commit ids - but working directory and staging area do not have commit ids
+
+Staging area
+
+	# -- git commit -- 
+	git commit 
+
+	git diff --staged - compares the staging area and the most recent repository commit 
+
+
+Repository
+
+
+
+
+

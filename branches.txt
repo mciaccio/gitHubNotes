@@ -1,0 +1,84 @@
+
+# branches
+# bug fix - new feature - collaborate etc
+
+A branch is a label for the commit.
+
+master is a branch label or name
+
+MenfiSystems (master) recipes $ git branch
+* master
+
+MenfiSystems (master) recipes $ git branch -a
+* master
+
+MenfiSystems (master) recipes $ git branch -a -v
+* master 03fd343 Add chile-recipe.txt
+
+# Create a new branch 
+$ git branch test
+
+# List the new branch
+MenfiSystems (master) recipes $ git branch -av
+* master 03fd343 Add chile-recipe.txt
+  test   03fd343 Add chile-recipe.txt
+
+# Note master in Unix prompt    
+MenfiSystems (master) recipes $ git checkout test 
+Switched to branch 'test'
+
+# Note test in Unix prompt    
+MenfiSystems (test) recipes $ 
+
+# Note the * location - test
+MenfiSystems (test) recipes $ git branch
+  master
+* test
+
+# from class example
+# allows you to see how a branch, a bug fix branch for example
+# and the master branch relate to one another
+# master branch commits both before and after a branch are listed
+# as well as the branch commits
+
+git log --graph --oneline master coins
+
+
+# My example 
+# Middle indent above the “/“ are the commit(s) associated with the branch
+# Outer indents are commits associated with the master branch
+# Works best when master commits are made after the branch commits
+# Gives the visuals something meaningful to display
+
+MenfiSystems (master) recipes $ git log --graph --oneline master test
+* 0cc8830 Update frosting - master branch edit
+| * 4bf0739 Update cake-recipe.txt branch example
+|/  
+* 03fd343 Add chile-recipe.txt
+* bbc8010 Add cake-recipe.txt, frosting-recipe.txt
+
+# -b - branch
+git checkout -b new_branch_name 
+# Note if this is done when a commit is checked out
+# All branch commits are relative to the checked out commit, not the tip of the branch, the master branch for example
+
+# Same as
+git branch new_branch_name # Normally from the tip, the master branch tip for example
+git checkout new_branch_name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
