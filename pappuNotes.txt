@@ -1,0 +1,31 @@
+ 
+
+/Users/MenfiSystems/Documents/githubBaseDirectory/gitHubNotes/pappuNotes.txt
+
+cd /Users/MenfiSystems/Documents/githubEducation/version_control1/pappu-pakia
+
+
+MenfiSystems version_control1 $ git clone https://github.com/udacity/pappu-pakia.git
+Cloning into 'pappu-pakia'...
+remote: Counting objects: 1221, done.
+remote: Total 1221 (delta 0), reused 0 (delta 0), pack-reused 1221
+Receiving objects: 100% (1221/1221), 3.02 MiB | 4.69 MiB/s, done.
+Resolving deltas: 100% (775/775), done.
+Checking connectivity... done.
+
+
+# brute force try 2
+git checkout 547f4171a82ec6429d002c1acef357aec41d3f17 - bugs (blink - no obstacles) present *** introduced bugs
+
+# brute force try 3
+git checkout 71d52709ddc4066e7a79a1d0a412e43429a0cdeb - bugs (blink - no obstacles) not there
+
+# brute force try 1
+git checkout 7c81b8021ec16c5c7b240220314d01200957d605 - bugs (blink - no obstacles) not there 
+
+# first one older - did not have the bug 
+git diff 71d52709ddc4066e7a79a1d0a412e43429a0cdeb 547f4171a82ec6429d002c1acef357aec41d3f17
+
+
+
+
