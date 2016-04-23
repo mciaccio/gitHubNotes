@@ -1,0 +1,55 @@
+
+
+$ pwd
+/Users/MenfiSystems/Documents/githubBaseDirectory/gitHubNotes
+
+MenfiSystems (master) gitHubNotes $ git remote
+origin
+
+MenfiSystems (master) gitHubNotes $ git remote -v
+origin	https://github.com/mciaccio/gitHubNotes (fetch)
+origin	https://github.com/mciaccio/gitHubNotes (push)
+
+# origin the name of the remote
+# origin - name of the remote repository - “pushed to”
+# master - the branch pushed up to the remote
+
+git push origin master
+
+# pull origin remote down to local master branch 
+
+# From gitHub to local machine 
+# origin - remote
+# master branch to pull
+git pull origin master
+
+remote: Counting objects: 5, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 5 (delta 2), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (5/5), done.
+From https://github.com/mciaccio/gitHubNotes
+ * branch            master     -> FETCH_HEAD
+   705b940..32c50df  master     -> origin/master
+Updating 705b940..32c50df
+Fast-forward
+ gitHubWebsiteFile | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 gitHubWebsiteFile
+
+# File pulled down from remote gitHub website 
+$ ls -l gitHubWebsiteFile 
+-rw-r--r--  1 MenfiSystems  staff  26 Apr 22 23:10 gitHubWebsiteFile
+
+# gitHub web site commit now on local machine 
+$ git log
+commit 32c50dff58c5ee0abdacacb5c524bd35d7ca85a9
+Author: Michael Ciaccio <michael.ciaccio@gmail.com>
+Date:   Fri Apr 22 23:06:10 2016 -0500
+
+    Rename gitHubWebsireFile to gitHubWebsiteFile
+
+
+
+
+
+

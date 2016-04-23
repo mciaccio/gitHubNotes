@@ -1,0 +1,70 @@
+
+
+# git merge will include the currently checked-out branch in the merged version
+# git merge always merges all the specified branches into the currently checked out branch
+# Recommended 
+
+# Merge branch 2 into branch 1
+git checkout branch1 
+git merge branch2
+
+# merge - CONFLICT
+git merge --abort
+
+# merge deletes the “lesser” label, not the commit(s) associated with that label
+
+
+# master checked out
+# note * master commit 0cc8830
+MenfiSystems (master) recipes $ git branch -a -v
+* master 0cc8830 Update frosting - master branch edit
+  test   4bf0739 Update cake-recipe.txt branch example
+
+# merge test branch into master
+MenfiSystems (master) recipes $ git merge test -m "Merge branch 'test'"
+Merge made by the 'recursive' strategy. <------------------
+ cake-recipe.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+# note * master commit (NEW) 0b934c7
+MenfiSystems (master) recipes $ git branch -a -v
+* master 0b934c7 Merge branch 'test'
+  test   4bf0739 Update cake-recipe.txt branch example
+
+MenfiSystems (master) recipes $ git log
+commit  0b934c7287d5ce371ef3bba858e6c609fda74466
+Merge: 0cc8830 4bf0739
+Author: Michael <MenfiSystems@Michaels-MacBook-Pro-2.local>
+Date:   Fri Apr 22 20:23:53 2016 -0500
+
+    Merge branch 'test'
+
+# test branch merged into master - delete it
+# test branch commit(s) not deleted, just the test label 
+MenfiSystems (master) recipes $ git branch -d test
+Deleted branch test (was 4bf0739).
+
+# test branch gone 
+MenfiSystems (master) recipes $ git branch -a -v
+* master 0b934c7 Merge branch 'test'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+

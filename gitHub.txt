@@ -166,6 +166,24 @@ Normally use git diff with two commit ids - but working directory and staging ar
 
 git diff --staged - compares the staging area and the most recent repository commit 
 
+# carriage return line feed resolution
+git config --global core.autocrlf true 
+
+# git garbage collection 
+# cleans up unreachable commit(s) 
+git gc
+
+# git show - parent 
+# shows code changes introduced by that commit
+# this command is useful when the parent commit id is not known
+# hence diff commitId1 commitId2 is not possible 
+# After a merge for example when commit id(s) from the two merged branches are interleaved
+# in this case the parent commit may not be clear due to branch commit interleaving
+# 
+
+git show 0cc88305813d4926dcba762f1fc5242a7f77e991
+
+
 
 
 
