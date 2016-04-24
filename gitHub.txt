@@ -244,6 +244,7 @@ Your branch is ahead of 'origin/master' by 1 commit.
 nothing to commit, working directory clean
 
 # update gitHub
+# The git push command takes two arguments: A remote name, for example, origin. A branch name, for example, master.
 MenfiSystems (master) gitHubNotes $ git push origin master
 Counting objects: 5, done.
 Delta compression using up to 4 threads.
@@ -287,7 +288,6 @@ git pull origin master
 # different-oil branch already checked out  
 git merge master -m “Merge branch ‘master’ into different-oil”
 
-origin/master
 
 
 
@@ -749,6 +749,7 @@ git remote -v # verbose
 origin	https://github.com/mciaccio/reflections.git (fetch) # pull?
 origin	https://github.com/mciaccio/reflections.git (push)
 
+# The git push command takes two arguments: A remote name, for example, origin. A branch name, for example, master.
 git push origin master - push up 
 Username for 'https://github.com': michael.ciaccio@gmail.com
 Password for 'https://michael.ciaccio@gmail.com@github.com': 
@@ -832,6 +833,7 @@ MenfiSystems (master) recipes $ ls -l lasagna
 # Get the local file up to the github repository
 git add lasagna # staging area 
 git commit -m "Add lasagna file"
+# The git push command takes two arguments: A remote name, for example, origin. A branch name, for example, master.
 git push origin master
 
 
