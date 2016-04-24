@@ -35,7 +35,7 @@ game_new.js
 
 
 
-*** Git syntax
+*** Git syntax begin
 
 git --version
 git version 2.6.4 (Apple Git-63)
@@ -183,6 +183,116 @@ git gc
 
 git show 0cc88305813d4926dcba762f1fc5242a7f77e991
 
+#
+# file deleted - Unix delete in directory 
+#
+MenfiSystems (master *+) gitHubNotes $ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   gitHub.txt
+	new file:   gitHubWebsiteNotes.txt
+	new file:   merge.txt
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	deleted:    gitHubWebsiteFile <-----------------
+
+# resolve file deleted by Unix Os - rm
+MenfiSystems (master *+) gitHubNotes $ git add -u
+
+MenfiSystems (master +) gitHubNotes $ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed: <-------------------
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   gitHub.txt
+	deleted:    gitHubWebsiteFile
+	new file:   gitHubWebsiteNotes.txt
+	new file:   merge.txt
+
+# git commit
+$ git commit -m "Update gitHub.txt, gitHubWebsiteFile, gitHubWebsiteNotes.txt, merge.txt"
+[master c807ed5] Update gitHub.txt, gitHubWebsiteFile, gitHubWebsiteNotes.txt, merge.txt
+ Committer: Michael <MenfiSystems@Michaels-MacBook-Pro-2.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 4 files changed, 143 insertions(+), 1 deletion(-)
+ delete mode 100644 gitHubWebsiteFile
+ create mode 100644 gitHubWebsiteNotes.txt
+ create mode 100644 merge.txt
+ 
+# git status after git commit
+MenfiSystems (master) gitHubNotes $ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
+
+# update gitHub
+MenfiSystems (master) gitHubNotes $ git push origin master
+Counting objects: 5, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 2.02 KiB | 0 bytes/s, done.
+Total 5 (delta 2), reused 0 (delta 0)
+To https://github.com/mciaccio/gitHubNotes
+   32c50df..c807ed5  master -> master
+
+# git status after git push
+MenfiSystems (master) gitHubNotes $ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working directory clean
+
+# if remote gitHub has changes (for example Sarah’s changes)
+# if local machine has different changes - (Mike added a spice to the chili-recipe.txt file)
+# then 
+git pull origin master
+# same as
+get fetch origin
+git merge master origin/master
+# the above will sync the remote and the local if there are no conflicts - same line edited for example 
+
+# recommended practice most cases  
+git pull origin master
+
+# However if you want to see the state or the changes on the remote
+# get fetch origin - will get them
+# get log origin/master - will show you the state, record, commits on the remote ****
+# useful to see commits on remote ****
+# these may or may not match the state of the local repository
+
+***
+*** local git state of remote - origin/master may be dated - git log origin/master 
+*** git log origin/master - local record of remote as of last update with remote, the origin - push or pull
+*** 
+***
+
+origin/master
+
+
+
+
+
+
+*** Git syntax end
+
+
 
 
 
@@ -216,6 +326,7 @@ Commits
 
 *** Glossary
 Git Repository - collection of files tracked as a cohesive unit
+origin - clone “Joe’s” gitHub repository to a local machine - Joe’s gitHub repository is now a remote called origin  
  
 
 

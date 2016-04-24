@@ -1,0 +1,262 @@
+ 
+# Forking a Repository
+# Also merging local (Mike) changes with conflicting remote origin gitHub changes (Sarah)
+# conflict conflicting changes resolution merging 
+
+# Copy “Joe’s” repository on gitHub Server - without local machine involvement  
+https://github.com/LarryMad/recipes 
+Fork button - top right
+
+# Next pull (clone) the fork(ed), your fork(ed) repository copy to your local machine 
+$ git clone https://github.com/mciaccio/recipes
+Cloning into 'recipes'...
+remote: Counting objects: 13, done.
+remote: Total 13 (delta 0), reused 0 (delta 0), pack-reused 13
+Unpacking objects: 100% (13/13), done.
+Checking connectivity... done.
+
+# git clone set up remote named origin 
+git remote -v
+origin	https://github.com/mciaccio/recipes (fetch)
+origin	https://github.com/mciaccio/recipes (push)
+
+
+# vi new recipe - 	mike_cake-recipe.txt
+#
+MenfiSystems (master) recipes $ git status 
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	mike_cake-recipe.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+# git add (mike_cake-recipe.txt)
+MenfiSystems (master) recipes $ git add mike_cake-recipe.txt
+
+git commit (mike_cake-recipe.txt)
+MenfiSystems (master +) recipes $ git commit -m "Add mike_cake-recipe.txt"
+[master ed45889] Add mike_cake-recipe.txt
+ Committer: Michael <MenfiSystems@Michaels-MacBook-Pro-2.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 24 insertions(+)
+ create mode 100644 mike_cake-recipe.txt
+MenfiSystems (master) recipes $ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
+
+# git push to origin master
+MenfiSystems (master) recipes $ git push origin master
+Counting objects: 2, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 266 bytes | 0 bytes/s, done.
+Total 2 (delta 1), reused 0 (delta 0)
+To https://github.com/mciaccio/recipes
+   a6a2f99..ed45889  master -> master
+
+# status after push 
+MenfiSystems (master) recipes $ git statuss
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working directory clean
+
+***
+*** Conflicting change - local - gitHub
+*** Same line of “code” changed  
+***
+
+# local change Mike added spice to chile-recipe.txt
+# local change git add - git commit - but NOT git push
+# change is to local repository only
+#
+# gitHub (remote) change - Sarah removed cumin
+# software, script ran;  provided by udacity 
+# ./sarah_changes.sh https://github.com/mciaccio/recipes
+# this change is on gitHub only
+# git pull origin master - not done yet 
+
+***
+*** look at local 
+***
+
+MenfiSystems (master) recipes $ git log
+commit 1f051997c0f2a85bd0d45d32f3c5709f190292ad
+Author: Michael <MenfiSystems@Michaels-MacBook-Pro-2.local>
+Date:   Sat Apr 23 18:54:46 2016 -0500
+
+    Added spice to chili-recipe.txt
+
+commit 89a3e32ada09ee97192f1af8f414cc68af906701
+Author: Michael <MenfiSystems@Michaels-MacBook-Pro-2.local>
+Date:   Sat Apr 23 18:48:11 2016 -0500
+
+    Added mike-cake-recipe.txt
+
+commit a6a2f991a1bb60e1dec7c5d68c8393b70ea6f7f6
+Author: Larry Madrigal <larry@udacity.com>
+Date:   Thu Sep 25 11:08:27 2014 -0700
+
+    Add a chili recipe
+
+
+***
+*** look at current, dated local record of remote - gitHub
+*** git pull origin master - not done yet 
+*** remote, gitHub “ahead” of local remote record
+***
+*** No record of Sarah’s changes made to remote, gitHub, but not communicated to local
+***
+
+
+MenfiSystems (master) recipes $ git log origin/master
+commit 89a3e32ada09ee97192f1af8f414cc68af906701
+Author: Michael <MenfiSystems@Michaels-MacBook-Pro-2.local>
+Date:   Sat Apr 23 18:48:11 2016 -0500
+
+    Added mike-cake-recipe.txt
+
+commit a6a2f991a1bb60e1dec7c5d68c8393b70ea6f7f6
+Author: Larry Madrigal <larry@udacity.com>
+Date:   Thu Sep 25 11:08:27 2014 -0700
+
+    Add a chili recipe
+
+***
+***
+***
+
+# Update local git repository with current state of remote gitHub origin  
+# merge NOT done
+MenfiSystems (master) recipes $ git fetch origin
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 1 (delta 1), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/mciaccio/recipes
+   89a3e32..6b5aad6  master     -> origin/master
+
+# git status tells us the local git repository
+# and the remote origin repository
+# each have a unique change that has not been resolved
+
+MenfiSystems (master) recipes $ git status
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 1 and 1 different commit each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+nothing to commit, working directory clean
+
+# attempt to merge the two changes, the local change, and the remote - origin change  
+MenfiSystems (master) recipes $ git merge origin/master
+Auto-merging chili-recipe.txt
+CONFLICT (content): Merge conflict in chili-recipe.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+# git merge origin/master updated the chili-recipe.txt
+# note the current date time stamp
+
+MenfiSystems (master *+|MERGING) recipes $ ls -ltr
+total 40
+-rw-r--r--  1 MenfiSystems  staff  341 Apr 23 18:42 frosting-recipe.txt
+-rw-r--r--  1 MenfiSystems  staff  705 Apr 23 18:42 cake-recipe.txt
+-rw-r--r--  1 MenfiSystems  staff   67 Apr 23 18:42 README.md
+-rw-r--r--  1 MenfiSystems  staff  705 Apr 23 18:47 mike-cake-recipe.txt
+-rw-r--r--  1 MenfiSystems  staff  938 Apr 23 20:04 chili-recipe.txt <-----------------
+
+MenfiSystems (master *+|MERGING) recipes $ date
+Sat Apr 23 20:04:45 CDT 2016 <-----------------
+
+# manually fix the conflict
+# manually fix what git can’t figure out
+# example two developers edited the same line of code
+MenfiSystems (master *+|MERGING) recipes $ vi chili-recipe.txt 
+ 
+# The two changes, the remote origin change and the local change have still not been resolved
+MenfiSystems (master *+|MERGING) recipes $ git status
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 1 and 1 different commit each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+	both modified:   chili-recipe.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+# routine git add of edited file
+MenfiSystems (master *+|MERGING) recipes $ git add chili-recipe.txt
+
+# routine git commit to local repository 
+MenfiSystems (master +|MERGING) recipes $ git commit -m "Merge remote-tracking branch 'origin/master'"
+[master cb0f5fc] Merge remote-tracking branch 'origin/master'
+ Committer: Michael <MenfiSystems@Michaels-MacBook-Pro-2.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+ 
+# local repository fixed, remote origin dated 
+MenfiSystems (master) recipes $ git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
+
+# update remote gitHub origin 
+MenfiSystems (master) recipes $ git push origin master
+Counting objects: 6, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 694 bytes | 0 bytes/s, done.
+Total 6 (delta 4), reused 0 (delta 0)
+To https://github.com/mciaccio/recipes
+   6b5aad6..cb0f5fc  master -> master
+
+MenfiSystems (master) recipes $ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working directory clean 
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+
