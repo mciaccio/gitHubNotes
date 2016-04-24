@@ -1,0 +1,243 @@
+
+*** How to Use Git and GitHub 
+*** Lesson 3: Using GitHub to Collaborate
+#
+# Pull Request 
+# Making a Pull Request 
+#
+# Get feed back before you update the remote origin master branch
+#
+# Example use: Used to initiate update of the repository master branch - one the developer does not have permission to update 
+#
+# Developer makes changes to a checked out branch (not master)
+# Developer add - commit - push the developer branch to remote gitHub
+# Developer initiates a “pull request” to the project architect for example 
+# Gives project architect a chance to test, comment, accept (update gitHub master branch) the pending developer changes
+ 
+
+# Make new branch - git branch different-oil
+# This branch will have Caroline’s pending changes
+# That are to be tried out, tested by Sarah
+# Protects remote origin gitHub master branch from being prematurely updated 
+# Until Sarah and Caroline agree 
+#
+# Collaborative environment only acceptable way to update master is with with pull requests ****
+# Keeps changes from getting out of sync - walking on each other ****
+#
+
+git branch different-oil
+
+# Checkout the new branch to be used for collaborative development
+git checkout different-oil
+
+# edit cake-recipe.txt
+- 1 cup milk
+- 1/2 cup vegetable oil <----------------
+- 2 teaspoons vanilla extract
+
+- 1 cup milk
+- 1/2 cup canols oil <----------------
+- 2 teaspoons vanilla extract
+
+# routine git add
+git add cake-recipe.txt
+
+# routine git commit
+git commit -m “Use canola oil instead of vegetable oil”
+
+# git push to different-oil branch NOT master 
+git push origin different-oil <--------- pushing to branch used in support of development, not master ****
+
+# Sarah monitoring the gets an email sees spelling error canals vs canola 
+# Opts to not merge to master at this point
+#
+# When ready (canola spelled right, bug fixed) Sarah will press Merge pull request button on gitHub
+#
+
+
+# Create branch used for development and collaboration between developer and architect  
+$ git branch different-oil
+
+# confirm 
+$ git branch -v
+  different-oil cb0f5fc Merge remote-tracking branch 'origin/master'
+* master        cb0f5fc Merge remote-tracking branch 'origin/master'
+
+# checkout new branch  
+MenfiSystems (master) recipes $ git checkout different-oil
+Switched to branch 'different-oil'
+
+# edit vi cake-recipe.txt
+- 1 cup milk
+- 1/2 cup canols oil <--------------
+- 2 teaspoons vanilla extract
+
+
+# routine add of edited file  
+$ git add cake-recipe.txt
+
+# not committed 
+$ git status
+On branch different-oil
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   cake-recipe.txt
+
+# successful commit to different-oil branch not master 
+$ git commit -m "Use canola oil instead of vegetable oil"
+[different-oil f5e1dc9] Use canola oil instead of vegetable oil
+ Committer: Michael <MenfiSystems@Michaels-MacBook-Pro-2.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+# push to different-oil branch not the master branch 
+$ git push origin different-oil
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 330 bytes | 0 bytes/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+To https://github.com/mciaccio/recipes
+ * [new branch]      different-oil -> different-oil
+
+#
+# Sarah has been making changes too - increasing the amount of oil to make a more moist cake
+# Caroline - git pull origin master - updates Caroline’s local repository 
+# With Sarah’s updates on gitHub
+#
+
+# Caroline gets Sarah’s updates from origin gitHub
+# pull origin remote - master branch of the origin remote 
+git pull origin master
+
+# alternate way ****
+# Allows you to see remote gitHub changes commits first ****
+git fetch origin ****
+
+# examine changes on remote origin gitHub
+get log origin/master 
+
+# if the remote origin changes look good - merge them into master on Caroline local machine 
+git merge origin/master master
+
+
+# level set git status
+MenfiSystems (different-oil) recipes $ git status
+On branch different-oil
+nothing to commit, working directory clean
+ 
+# git fetch origin - allows us to see the changes on the origin remote on gitHub
+MenfiSystems (different-oil) recipes $ git fetch origin
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 3 (delta 2), reused 3 (delta 2), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/mciaccio/recipes
+   cb0f5fc..f089da8  master     -> origin/master
+
+# see if the commits on the remote origin master branch are what we thing they are
+MenfiSystems (different-oil) recipes $ git log origin/master
+commit f089da86999bf9118741128fbfe6784572092e22
+Author: Sarah Spikes <sarah+github@udacity.com>
+Date:   Sun Apr 24 01:03:35 2016 -0500
+
+    Merge pull request from more-oil
+    
+    Add more oil so the cake is more moist!
+
+commit cb0f5fcb51a7fe98cdaa839b16b2b4a6267ef255
+Merge: 1f05199 6b5aad6
+Author: Michael <MenfiSystems@Michaels-MacBook-Pro-2.local>
+Date:   Sat Apr 23 20:15:27 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 6b5aad67618858c2cd45d660ed1f79bb7b8483de
+Author: Sarah Spikes <sarah+github@udacity.com>
+Date:   Sat Apr 23 18:57:31 2016 -0500
+
+    Remove cumin from chili
+
+# above equivalent to - pull from origin remote - master branch
+# git pull origin master
+# Can’t see remote origin commits before merge - merging blind
+
+# Course wrap up advanced notes
+
+# Create a new remote - named upstream
+# Add original repository as a remote 
+# remote name this time is upstream - not origin
+# This remote - upstream - is not directly writeable - it is protected
+git remote add upstream https://github.com/udacity/create-your-own-adventure
+
+git checkout master
+
+# merge remote branch (upstream) into master
+# at this point master looks like the protected repository - 
+# https://github.com/udacity/create-your-own-adventure
+git pull upstream master
+
+git checkout stop-drop-roll
+git merge master
+
+vi file (fire.md) resolve merge conflict
+
+git add fire.md
+git commit -m “your message here”
+
+# push branch to fork - origin
+# origin is your fork
+# upstream - not able to write
+# origin you do have permission to write because it is your fork
+git push origin stop-drop-roll
+
+# update master on gitHub
+git checkout master
+git push origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+

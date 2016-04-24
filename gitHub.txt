@@ -283,6 +283,10 @@ git pull origin master
 *** 
 ***
 
+# better merge message
+# different-oil branch already checked out  
+git merge master -m “Merge branch ‘master’ into different-oil”
+
 origin/master
 
 
