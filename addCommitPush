@@ -1,0 +1,18 @@
+
+git add InferentialStatistic.pages     ; git commit InferentialStatistic.pages -m "Update InferentialStatistic.pages" ; git push origin master ; echo $?
+
+git add standardDeviationsPicture.pages; git commit standardDeviationsPicture.pages -m "standardDeviationsPicture.pages" ; git push origin master ; echo $?
+
+git add ; git commit -m "" ; git push origin master ; echo $?
+
+git add symbols.pages; git commit symbols.pages -m "Update symbols.pages" ; git push origin master ; echo $?
+
+git add ; git commit -m "" ; git push origin master ; echo $?
+
+git add ; git commit -m "" ; git push origin master ; echo $?
+
+git add ; git commit -m "" ; git push origin master ; echo $?
+
+
+
+
