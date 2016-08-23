@@ -1,0 +1,21 @@
+
+
+For a rm or a deleted file just do the routine, the git add, followed by the git commit, follow by the git push.
+
+git add InferentialStatistic.pages     ; git commit InferentialStatistic.pages -m "Update InferentialStatistic.pages" ; git push origin master ; echo $?
+
+git add standardDeviationsPicture.pages; git commit standardDeviationsPicture.pages -m "standardDeviationsPicture.pages" ; git push origin master ; echo $?
+
+git add ; git commit -m "" ; git push origin master ; echo $?
+
+git add symbols.pages; git commit symbols.pages -m "Update symbols.pages" ; git push origin master ; echo $?
+
+git add ; git commit -m "" ; git push origin master ; echo $?
+
+git add ; git commit -m "" ; git push origin master ; echo $?
+
+git add ; git commit -m "" ; git push origin master ; echo $?
+
+
+
+
